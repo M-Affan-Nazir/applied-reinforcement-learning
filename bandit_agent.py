@@ -38,4 +38,8 @@ class BanditAgent:
                     best_preference = preference
                     best_action_index = i
             return best_action_index
-            
+    
+    def update(self, a, r):
+        self.N[a] += 1
+        step = (1/self.N[a]) if self.alpha is None else self.alpha
+        self.Q[a] += step * (r - self.Q[a])
