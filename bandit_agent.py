@@ -49,3 +49,6 @@ class BanditAgent:
         self.Q = np.full(self.k, self.init)
         self.N = self.N = np.zeros(self.k, dtype=int)
         self.t = 0
+    
+    def estimate(self):
+        return self.Q
