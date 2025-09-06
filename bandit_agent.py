@@ -12,6 +12,7 @@ class BanditAgent:
         self.alpha = alpha
         self.c = c
         self.ε = ε
+        self.init = init
         self.Q = np.full(k, init) # Action values
         self.N = np.zeros(k, dtype=int) # N[a] = number of times arm `a` has been chosen
         self.t = 0 # Total time-steps (overall pulls made so far)
@@ -43,3 +44,8 @@ class BanditAgent:
         self.N[a] += 1
         step = (1/self.N[a]) if self.alpha is None else self.alpha
         self.Q[a] += step * (r - self.Q[a])
+    
+    def reset(self):
+        self.Q = np.full(self.k, self.init)
+        self.N = self.N = np.zeros(self.k, dtype=int)
+        self.t = 0
