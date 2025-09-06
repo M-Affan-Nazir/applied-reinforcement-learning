@@ -5,7 +5,7 @@ class BanditAgent:
     def __init__(self, k, alpha=None, c=0, init=0, ε = 0.1):
         # k: number of arms
         # alpha: step-size (None -> sample average)
-        # c: USB exploration constant ( 0 -> ε-greedy exploration)
+        # c: UCB exploration constant ( 0 -> ε-greedy exploration)
         # init: optimist Q_0
         
         self.k = k
@@ -26,7 +26,7 @@ class BanditAgent:
             else:
                 return np.argmax(self.Q)
         else:
-            best_preference = np.NINF
+            best_preference = -np.inf
             best_action_index = 0
             for i in range(self.k):
                 if self.N[i] == 0:
@@ -47,8 +47,8 @@ class BanditAgent:
     
     def reset(self):
         self.Q = np.full(self.k, self.init)
-        self.N = self.N = np.zeros(self.k, dtype=int)
+        self.N = np.zeros(self.k, dtype=int)
         self.t = 0
     
     def estimate(self):
-        return self.Q
+        return self.Q.copy()
