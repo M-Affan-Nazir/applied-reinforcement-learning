@@ -13,7 +13,7 @@ applied-reinforcement-learning/
 ## Getting Started
 - Clone the repo and enter a project folder:
   ```bash
-  git clone https://github.com/<you>/applied-reinforcement-learning.git
+  git clone https://github.com/M-Affan-Nazir/applied-reinforcement-learning.git
   cd applied-reinforcement-learning/bandit-agent
   ```
 - Follow the project’s local `README.md` (each project declares its own Python/C++ deps and run steps).
